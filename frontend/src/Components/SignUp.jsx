@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import { AiOutlineFacebook } from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from 'react-router-dom';
 
 const url = process.env.REACT_APP_URL;
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -21,11 +25,11 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signup-container flex justify-center items-center h-screen bg-gray-100 ">
-     <div className="signup-content mx-auto w-1/3 p-4 bg-white rounded-md shadow-md ">
+    <div className="signup-container flex justify-center items-center h-screen bg-gradient-to-r from-teal-400 to-blue-500">
+ <div className="signup-content mx-auto w-full  md:w-2/3 lg:w-1/3 p-4 bg-white rounded-md shadow-md">
         <h1 className="signup-heading text-2xl font-bold mb-4 text-center">SignUp</h1>
         <form onSubmit={handleSubmit}>
-          <div className="signup-form grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="signup-form grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="form-group">
               <label htmlFor="First_name" className="block font-bold mb-2">First Name</label>
               <input
@@ -67,10 +71,27 @@ const SignUp = () => {
               />
             </div>
           </div>
-          <button type="submit" className="signup-button w-40 px-3 py-2 mt-6 bg-blue-500 text-white rounded-md text-base transition-colors duration-300 ease hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+          <button type="submit" className="signup-button w-full md:w-40 px-3 py-2 mt-6 bg-blue-500 text-white rounded-md text-base transition-colors duration-300 ease hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
             SignUp
           </button>
         </form>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mt-4 place-items-center">
+          <button className="flex items-center border border-gray-300 rounded-md px-4 py-2 hover:bg-gray-100">
+            <FcGoogle className="google-icon w-6 h-6 text-red-600 mr-2" />
+            <span className="text-sm">Login with Google</span>
+          </button>
+          <button className="flex items-center border border-gray-300 rounded-md px-4 py-2 hover:bg-gray-100">
+            <AiOutlineFacebook className="facebook-icon w-6 h-6 text-blue-500 mr-2" />
+            <span className="text-sm">Login with Facebook</span>
+          </button>
+        </div>
+        <div className="flex items-center justify-center mt-4">
+          <span className="text-gray-500 text-xs md:text-base">Already have an account?</span>
+          <button className="text-blue-500 ml-2 hover:text-blue-700 text-xs md:text-base" onClick={() => navigate("/login")}>
+            Login
+          </button>
+        </div>
       </div>
     </div>
   );
