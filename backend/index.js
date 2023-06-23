@@ -3,6 +3,9 @@ const {Configuration,OpenAIApi} =require("openai")
 
 const {userRouter} = require("./routers/userrote")
 const {authenticate}=require("./middlewear/authentication")
+const interviewRoutes = require('./routers/interviews');
+
+
 
 const {connection}=require("./db")
 
@@ -26,6 +29,8 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(express.json())
 app.use("/users",userRouter)
+
+app.use('/interviews', interviewRoutes);
 
 // app.use(authenticate)
 
