@@ -19,8 +19,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="max-w-md w-full p-4 bg-white rounded-md shadow-md">
+    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-teal-400 to-blue-500 mt-[-50px] ">
+      <div className="w-1/4 p-4 bg-white rounded-md shadow-md"> 
         <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -49,7 +49,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-2 bg-blue-500 text-white rounded-md text-base font-bold transition duration-300 ease hover:bg-blue-600"
+            className="w-full py-2 bg-blue-500 text-white mt-5 rounded-md text-base font-bold transition duration-300 ease hover:bg-blue-600"
           >
             Login
           </button>
