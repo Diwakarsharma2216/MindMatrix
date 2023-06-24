@@ -62,6 +62,48 @@ try {
 	
 });
 
+//git Oauth
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
+app.get("/",(req,res)=>{
+    res.send("route start")
+})
+
+//login
+app.get("/login",(req,res)=>{
+    res.sendFile(__dirname+"/index.html")
+})
+
+
+app.get("/auth/github",async(req,res)=>{
+    const code=req.query
+    console.log(code) 
+    const accessToken=await fetch("https://github.com/login/oauth/access_token",{
+        method:"POST",
+        headers:{
+            Accept:"application/json",
+            "content-type":"application/json"
+        },
+        body : JSON.stringify({
+            client_id:process.env.client_id,
+            client_secret:process.env.client_secret,
+            code
+        })
+    }).then((res)=> res.json())
+     const user=await fetch("https://api.github.com/user",{
+        headers:{
+           Authorization:`Bearer ${accessToken.access_token}` 
+        }
+     }).then((res)=> res.json())
+     .catch((err)=> console.log(err)) 
+        
+    console.log(user)
+    res.send("sign in with github success")
+})
+
+
+
+
 app.listen(process.env.PORT,async()=>{
     try {
         await connection
