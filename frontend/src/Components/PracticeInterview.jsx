@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const PracticeInterview = () => {
   const [interviewType, setInterviewType] = useState('');
   const [technology, setTechnology] = useState('');
   const [difficultyLevel, setDifficultyLevel] = useState('');
   const [numQuestions, setNumQuestions] = useState('');
-
+const navigate=useNavigate()
   const handleStartInterview = () => {
-    // Code to start the interview session with the selected parameters
-    console.log('Starting interview...');
+    navigate("/interViewPage")
   };
 
   const handleLogout = () => {
-    // Code to handle logout
     console.log('Logging out...');
   };
 
