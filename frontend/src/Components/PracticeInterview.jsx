@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Intervew } from './Intervew';
 
 const PracticeInterview = () => {
   const [interviewType, setInterviewType] = useState('');
@@ -94,7 +95,9 @@ const PracticeInterview = () => {
       >
         Logout
       </button>
+      <Intervew technology={technology}  difficultyLevel={difficultyLevel}  numQuestions={numQuestions} />
     </div>
+   
   );
 };
 

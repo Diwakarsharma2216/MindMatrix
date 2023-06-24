@@ -2,7 +2,7 @@ import { Box, Button, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import axios from 'axios';
 import TypewriterEffect from "./TypewritterEffect";
-export const Intervew = () => {
+export const Intervew = ({numQuestions,technology,difficultyLevel}) => {
     const [data,setdata]=useState("")
     const [responseData, setResponseData] = useState('');
     const [flag,setflag]=useState(false)
@@ -10,7 +10,7 @@ export const Intervew = () => {
     const [level,setlevel]=useState("")
     const handlesubmitform=(e)=>{
 e.preventDefault()
-let resdata=`can you Take my Interview i am a ${course} developer can you ask me 10 question of ${level} level?`
+let resdata=`can you Take my Interview i am a ${technology} developer can you ask me 10 question of ${difficultyLevel} level and number of question is ${numQuestions}?`
 setdata(resdata)
 setcoures("")
 setlevel("")
