@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Intervew } from './Intervew';
+import axios from 'axios';
 
 
 const PracticeInterview = () => {
@@ -8,8 +9,29 @@ const PracticeInterview = () => {
   const [technology, setTechnology] = useState('');
   const [difficultyLevel, setDifficultyLevel] = useState('');
   const [numQuestions, setNumQuestions] = useState('');
+  const [question,setquestion]=useState([])
 const navigate=useNavigate()
   const handleStartInterview = () => {
+   console.log("Starting interveiw")
+   const data=`i am ${technology} developer can you take my interview and difficulty level is ${difficultyLevel} and number of question is ${numQuestions}`
+   axios.post("http://localhost:4200/ask",{message:data})
+   .then((res)=>{
+    console.log(res)
+    let opeanairesponse=res.data.completion.content
+    // second axios post request here 
+    const  questionformate=`hey chatgpt can give me only question from this ${opeanairesponse} in form of array of string`
+     axios.post("http://localhost:4200/ask",{message:questionformate})
+     .then((res)=>{
+      console.log(res)
+      console.log(res.data.completion.content)
+      setquestion(res.data.completion.content)
+     })
+     .catch((err)=>{
+      console.log(err)
+     })
+   }).catch((err)=>{
+    console.log(err)
+   })
     navigate("/interViewPage")
   };
 
