@@ -1,3 +1,4 @@
+
 <h1 align="center">MindMatrix</h1>
 <p>Welcome to MindMatrix - an AI-powered interview platform that enables you to practice interviews, receive AI-generated questions and obtain valuable feedback. This platform leverages advanced technologies to simulate real-world interview scenarios and help you enhance your interview skills.</p>
 
