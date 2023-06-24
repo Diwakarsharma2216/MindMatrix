@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Intervew } from './Intervew';
+
 
 const PracticeInterview = () => {
   const [interviewType, setInterviewType] = useState('');
@@ -93,7 +95,9 @@ const navigate=useNavigate()
       >
         Logout
       </button>
+      <Intervew technology={technology}  difficultyLevel={difficultyLevel}  numQuestions={numQuestions} />
     </div>
+   
   );
 };
 

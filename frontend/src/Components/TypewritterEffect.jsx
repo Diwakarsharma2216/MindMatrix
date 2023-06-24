@@ -17,7 +17,7 @@ const TypewriterEffect = ({ data }) => {
     }
   }, [currentIndex, data]);
 
-  return  <Container><Text fontSize={{base:"21px",md:"50px"}} color='tomato'>
+  return  <Container maxW={"2xl"}><Text fontSize={{base:"21px",md:"20px"}} color='tomato'>
   {text}
 </Text>
 </Container> 
