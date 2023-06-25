@@ -3,11 +3,13 @@ import axios from 'axios';
 import React, {  useContext, useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { QaContex } from '../Contex/QAContex';
+import { useNavigate } from "react-router-dom"
 
 
 const InterViewPage = () => {
-  const {questiondata}=useContext(QaContex)
+  const {questiondata,setfeedbackdata}=useContext(QaContex)
   const [questions, setQuestions] = useState([]);
+  const navigate = useNavigate();
   
   let data=[]
 
@@ -124,9 +126,11 @@ let feedbackdata=`I provide you an array of a objects in which there is a questi
  axios.post("http://localhost:4200/ask",{message:feedbackdata}).then((res)=>{
   console.log(res)
   console.log(res.data.completion.content)
+  setfeedbackdata(res.data.completion.content)
  }).catch((err)=>{
   console.log(err)
  })
+ navigate("/feedback")
 
   }
 // console.log(questions[questionNumber])
