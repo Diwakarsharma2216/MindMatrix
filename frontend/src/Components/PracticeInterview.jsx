@@ -48,7 +48,7 @@ const navigate=useNavigate()
       <h1 className="text-4xl font-bold text-white mb-6">InterviewPrep</h1>
       <h2 className="text-2xl font-semibold text-white mb-4">Practice Interview</h2>
       <div className="mb-4">
-        <label htmlFor="interviewType" className="mr-2 text-white">Select Interview Type:</label>
+        <label htmlFor="interviewType" className="mr-2 text-white block sm:inline">Select Interview Type:</label>
         <select
           id="interviewType"
           className="p-2 border border-gray-300 rounded"
@@ -62,7 +62,7 @@ const navigate=useNavigate()
       </div>
       {interviewType === 'technical' && (
         <div className="mb-4">
-          <label htmlFor="technology" className="mr-2 text-white">Select Technology:</label>
+          <label htmlFor="technology" className="mr-2 text-white block sm:inline">Select Technology:</label>
           <select
             id="technology"
             className="p-2 border border-gray-300 rounded"
@@ -78,7 +78,7 @@ const navigate=useNavigate()
       )}
       {interviewType === 'technical' && (
         <div className="mb-4">
-          <label htmlFor="difficultyLevel" className="mr-2 text-white">Select Difficulty Level:</label>
+          <label htmlFor="difficultyLevel" className="mr-2 text-white block sm:inline">Select Difficulty Level:</label>
           <select
             id="difficultyLevel"
             className="p-2 border border-gray-300 rounded"
@@ -94,7 +94,7 @@ const navigate=useNavigate()
       )}
       {interviewType === 'technical' && (
         <div className="mb-4">
-          <label htmlFor="numQuestions" className="mr-2 text-white">Number of Questions:</label>
+          <label htmlFor="numQuestions" className="mr-2 text-white block sm:inline">Number of Questions:</label>
           <select
             id="numQuestions"
             className="p-2 border border-gray-300 rounded"
