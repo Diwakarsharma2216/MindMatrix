@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Intervew } from './Intervew';
+
 import axios from 'axios';
 import { QaContex } from '../Contex/QAContex';
 
@@ -121,7 +121,7 @@ const navigate=useNavigate()
       >
         Logout
       </button>
-      <Intervew technology={technology}  difficultyLevel={difficultyLevel}  numQuestions={numQuestions} />
+      {/* <Intervew technology={technology}  difficultyLevel={difficultyLevel}  numQuestions={numQuestions} /> */}
     </div>
    
   );

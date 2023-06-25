@@ -4,7 +4,7 @@ import { AiOutlineFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
 
-const url = process.env.REACT_APP_URL;
+const url = "";
 
 const SignUp = () => {
   const navigate = useNavigate();
