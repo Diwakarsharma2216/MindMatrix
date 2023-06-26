@@ -12,7 +12,7 @@ const PracticeInterview = () => {
   const [difficultyLevel, setDifficultyLevel] = useState('');
   const [numQuestions, setNumQuestions] = useState('');
 //  const [question,setquestion]=useState("")
-const {setquestiondata}=useContext(QaContex)
+const {setquestiondata,setcontextech}=useContext(QaContex)
 
 const navigate=useNavigate()
   const handleStartInterview = () => {
@@ -21,6 +21,7 @@ const navigate=useNavigate()
    axios.post("http://localhost:4200/ask",{message:data})
    .then((res)=>{
     console.log(res)
+    setcontextech(technology)
     let opeanairesponse=res.data.completion.content
     // second axios post request here 
     const  questionformate=`hey chatgpt can give me only and only no other response other than question from this ${opeanairesponse} in form of Array string and please give me only question okay`

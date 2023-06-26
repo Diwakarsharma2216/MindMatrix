@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from "axios";
 import { AiOutlineFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
+import { QaContex } from '../Contex/QAContex';
 
 const url =process.env.REACT_APP_URL;
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const {setcontexname}=useContext(QaContex)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -21,6 +23,7 @@ const SignUp = () => {
       .then(res => {
         if(res.data.message){
           alert("User registered successfully")
+          setcontexname(data.name)
         }else{
           alert("User already exists. Please login")
         }

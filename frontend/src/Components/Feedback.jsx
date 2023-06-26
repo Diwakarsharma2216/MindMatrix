@@ -4,7 +4,7 @@ import TypewriterEffect from './TypewritterEffect'
 import { QaContex } from '../Contex/QAContex'
 
 export const Feedback = () => {
-    const {feedbackdata}=useContext(QaContex)
+    const {feedbackdata,contexname,contextech}=useContext(QaContex)
   return (
     <div>
        <Box
@@ -18,8 +18,8 @@ export const Feedback = () => {
 >
 <Container maxW={"container.xl"}>
 <Text fontSize={{base:"4xl",md:"6xl"}} color='tomato'>FeedBack😎</Text>
- <Text fontSize={{base:"2xl",md:"4xl"}}>UserName:-Diwakar Sharma</Text>
- <Text fontSize={{base:"2xl",md:"4xl"}}>UserName:-Mern</Text>
+ <Text fontSize={{base:"2xl",md:"4xl"}}>UserName:-{contexname ? contexname :"wait...."}</Text>
+ <Text fontSize={{base:"2xl",md:"4xl"}}>UserName:-{contextech ? contextech :"wait...."}</Text>
  {feedbackdata ? <TypewriterEffect data={feedbackdata}  /> : <Spinner />}
 {feedbackdata ?  <Text>Thanks You </Text> :""}
  </Container>
