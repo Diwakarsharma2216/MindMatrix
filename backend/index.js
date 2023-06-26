@@ -1,43 +1,34 @@
 const express=require("express")
-const {Configuration,OpenAIApi} =require("openai")
-
-const {userRouter} = require("./routers/userrote")
-const {authenticate}=require("./middlewear/authentication")
-const interviewRoutes = require('./routers/interviews');
-
-
-
-const {connection}=require("./db")
-
-
-
-
+const { connection } = require("./db")
+const { Configuration, OpenAIApi } = require("openai");
 const bodyParser =require("body-parser")
 require("dotenv").config()
-const cors=require('cors')
+const cors = require('cors')
 
 
-const configuration=new Configuration({
-    organization:process.env.organization,
+
+
+const configuration = new Configuration({
+	organization:process.env.organization,
 	apiKey:process.env.apiKey,
-})
+});
+const openai = new OpenAIApi(configuration);
 
-const openai=new OpenAIApi(configuration)
+const { userRouter } = require("./routes/user.routes")
 
 const app=express()
-app.use(bodyParser.json())
+
+app.use(bodyParser.json());
 app.use(cors())
 app.use(express.json())
+
+// #### USER ROUTER ######
 app.use("/users",userRouter)
 
-app.use('/interviews', interviewRoutes);
-
-// app.use(authenticate)
 
 
-app.get("/",(req,res)=>{
-    res.send("welcome to mindmatrix")
-})
+
+
 
 // ##### OpenAi 😊 ########
 app.post("/ask", async (req, res) => {
@@ -62,12 +53,14 @@ try {
 	
 });
 
+
 app.listen(process.env.PORT,async()=>{
     try {
-        await connection
-        console.log("connected with database")
+    await connection
+    console.log(`Server is Running at ${process.env.PORT}`)
+    console.log(">>>>>>>>>>>>Connected To DB>>>>>>>>>>>>>>")
     } catch (error) {
-        console.log(error)
+        console.log(error.message)
     }
-    console.log(`server is running at ${process.env.PORT} port `)
 })
+
