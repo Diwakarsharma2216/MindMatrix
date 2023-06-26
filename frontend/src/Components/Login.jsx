@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
-const url = process.env.REACT_APP_URL;
+import { useNavigate } from "react-router-dom";
+const url ="http://localhost:4200";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${url}/user/login`, { email, password })
+      .post(`${url}/users/login`, { email, password })
       .then((res) => {
         console.log(res.data);
-        localStorage.setItem('token', JSON.stringify(res.data.token));
+        if(res.data.message){
+          alert(res.data.message)
+          navigate("/");
+        }else{
+          alert(res.data.err)
+        }
+        localStorage.setItem('token',res.data.token);
+        console.log(res)
       })
       .catch((err) => console.log(err));
   };

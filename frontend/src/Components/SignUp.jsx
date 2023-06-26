@@ -4,7 +4,7 @@ import { AiOutlineFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
 
-const url = "";
+const url =process.env.REACT_APP_URL;
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -17,11 +17,21 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`${url}/user/register`, data)
+    axios.post(`${url}/users/register`, data)
       .then(res => {
-        console.log(res.data);
+        if(res.data.message){
+          alert("User registered successfully")
+        }else{
+          alert("User already exists. Please login")
+        }
+        // alert(res.data.message)
       })
       .catch(err => console.log(err));
+
+      setEmail("")
+      setPassword("")
+      setFirstName("")
+      setLastName("")
   };
 
   return (

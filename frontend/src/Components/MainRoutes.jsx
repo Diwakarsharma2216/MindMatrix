@@ -6,10 +6,16 @@ import Login from './Login'
 import PracticeInterview from './PracticeInterview'
 import InterViewPage from './InterViewPage'
 import { Feedback } from './Feedback'
+import { PrivateRoutes } from './PrivateRoutes'
 const MainRoutes = () => {
   return (
     <Routes>
-        <Route path="/" element={<PracticeInterview/>}/>
+        <Route path="/" element={
+          <PrivateRoutes>
+        <PracticeInterview/>
+        </PrivateRoutes>
+      }
+        />
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/interViewPage" element={<InterViewPage/>}/>
